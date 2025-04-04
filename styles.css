@@ -59,12 +59,16 @@ h3 {
 
 .guess-container {
     position: relative;
+    width: 100%; /* Make the guess container take full width */
+    display: flex;
+    justify-content: center; /* Center the input and button */
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .dropdown {
     position: absolute;
-    top: 100%;
-    /* Below the input */
+    top: calc(100% + 5px); /* Adjust position slightly */
     left: 0;
     width: 100%;
     background-color: white;
@@ -73,7 +77,6 @@ h3 {
     overflow-y: auto;
     z-index: 1000;
     display: none;
-    /* Hidden by default */
 }
 
 .dropdown-option {
@@ -88,9 +91,8 @@ h3 {
 #guess-input {
     padding: 10px;
     font-size: 16px;
-    width: 60%;
+    width: 60%; /* Adjust width as needed */
     margin-right: 10px;
-    margin-top: 10px;
 }
 
 #submit-guess {
@@ -102,12 +104,13 @@ h3 {
     margin-top: 10px;
     font-size: 18px;
     font-weight: bold;
+    text-align: center; /* Center feedback text */
 }
 
 #attempts-left-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch; /* Make container stretch its children */
     margin-top: 10px;
 }
 
@@ -115,6 +118,41 @@ h3 {
     margin: 5px 0;
     font-size: 16px;
     text-align: center;
+}
+
+/* Style the row for incorrect guesses */
+.incorrect-guesses-row {
+    display: grid; /* Use grid for better column control */
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Four equal columns */
+    gap: 5px; /* Small gap between items */
+    margin-bottom: 5px;
+    align-items: center; /* Vertically align items in the row */
+}
+
+.incorrect-guess,
+.distance,
+.percentage {
+    width: 100%; /* Make input fields take full width of their grid cell */
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.direction-arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    height: 30px; /* Match input height */
+    box-sizing: border-box;
+}
+
+.direction-arrow {
+    max-width: 80%;
+    max-height: 80%;
 }
 
 #reload-button {
@@ -126,6 +164,8 @@ h3 {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
+    width: 80%; /* Make the reload button wider on smaller screens */
+    max-width: 300px; /* Limit maximum width */
 }
 
 #reload-button:hover {
@@ -141,28 +181,20 @@ h3 {
     padding: 20px;
     border: 1px solid #ccc;
     z-index: 1000;
+    text-align: center;
 }
 
 .modal-button {
     margin-top: 10px;
     padding: 5px 10px;
+    cursor: pointer;
 }
 
 .modal-button:hover {
     background-color: #45a049;
 }
 
-@media (max-width: 600px) {
-    .game-container {
-        width: 90%;
-    }
-
-    #guess-input {
-        width: 70%;
-    }
-}
-
-/* New styles for start screen */
+/* Start screen styles */
 .start-screen {
     display: flex;
     flex-direction: column;
@@ -174,56 +206,87 @@ h3 {
     width: 100%;
     height: 100%;
     background-color: white;
-    /* Or any background color */
     z-index: 10;
-    /* Ensure it's on top */
+    text-align: center; /* Center text in start screen */
+}
+
+.start-screen p {
+    margin-bottom: 10px;
 }
 
 .start-screen img {
     max-width: 80%;
-    /* Adjust as needed */
-    max-height: 60%;
-    /* Adjust as needed */
+    max-height: 40%; /* Adjusted height for better fit */
+    margin-bottom: 20px;
 }
 
 #play-button {
-    /* Style your play button */
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px 30px;
+    font-size: 18px;
     cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
-/* New styles for incorrect answer display */
-#attempts-left-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
+#play-button:hover {
+    background-color: #0056b3;
 }
 
-/* Style the row to align input boxes and arrow container */
-.incorrect-guesses-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /* Space between elements, adjust as needed */
-}
+/* Media query for smaller screens */
+@media (max-width: 480px) {
+    .game-container {
+        width: 95%;
+        padding: 15px;
+    }
 
-/* Style the arrow container to match input box appearance */
-.direction-arrow-container {
-    width: 50px;
-    /* A narrower width to prevent overflow */
-    height: 30px;
-    /* Matches the height of your input boxes */
-    border: 1px solid #ccc;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    #guess-input {
+        width: 70%;
+        font-size: 14px;
+        padding: 8px;
+        margin-right: 5px;
+    }
 
-/* Constrain the arrow image size */
-.direction-arrow {
-    max-width: 100%;
-    max-height: 100%;
+    #submit-guess {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .incorrect-guesses-row {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Adjust minimum width as needed */
+        gap: 2px;
+    }
+
+    .incorrect-guess,
+    .distance,
+    .percentage {
+        font-size: 10px;
+        padding: 3px;
+    }
+
+    .direction-arrow-container {
+        height: 25px;
+    }
+
+    #attempts-left {
+        font-size: 14px;
+    }
+
+    #reload-button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
 }
