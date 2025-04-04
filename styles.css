@@ -10,7 +10,7 @@ h1 {
     color: #333;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 22px; /* Adjusted font size */
+    font-size: 22px;
 }
 
 h2 {
@@ -18,7 +18,7 @@ h2 {
     color: #333;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 18px; /* Adjusted font size */
+    font-size: 18px;
 }
 
 h3 {
@@ -26,7 +26,7 @@ h3 {
     color: #333;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 16px; /* Adjusted font size */
+    font-size: 16px;
 }
 
 .game-container {
@@ -34,7 +34,7 @@ h3 {
     max-width: 600px;
     margin: 20px auto;
     background-color: white;
-    padding: 15px; /* Adjusted padding */
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -45,14 +45,14 @@ h3 {
 
 .game-board {
     text-align: center;
-    width: 100%; /* Ensure game board takes full container width */
+    width: 100%;
 }
 
 #county-image {
     width: 100%;
     max-width: 500px;
     height: auto;
-    margin: 15px auto; /* Adjusted margins */
+    margin: 15px auto;
     display: block;
 }
 
@@ -61,7 +61,7 @@ h3 {
     font-size: 18px;
     font-weight: bold;
     color: green;
-    text-align: center; /* Center the correct answer */
+    text-align: center;
 }
 
 .guess-container {
@@ -117,7 +117,7 @@ h3 {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
-    min-height: 2em; /* Ensure some space even when empty */
+    min-height: 2em;
 }
 
 #attempts-left-container {
@@ -127,7 +127,7 @@ h3 {
     margin-top: 10px;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 5px; /* Adjusted side padding */
+    padding: 0 5px;
 }
 
 #attempts-left {
@@ -140,9 +140,9 @@ h3 {
 
 .incorrect-guesses-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr)); /* More flexible minmax */
+    grid-template-columns: 2fr 2fr 1fr 1fr; /* Adjusted column proportions */
     gap: 2px;
-    margin-bottom: 3px; /* Reduced margin */
+    margin-bottom: 3px;
     align-items: center;
 }
 
@@ -158,6 +158,8 @@ h3 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    height: 20px; /* Enforce a specific height */
+    line-height: 20px; /* Vertically center text */
 }
 
 .direction-arrow-container {
@@ -166,7 +168,8 @@ h3 {
     align-items: center;
     border: 1px solid #ccc;
     background-color: #fff;
-    height: 20px; /* Reduced height */
+    height: 20px; /* Enforce the same height */
+    width: 100%; /* Make it fill its grid cell */
     box-sizing: border-box;
 }
 
@@ -183,9 +186,9 @@ h3 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px; /* Reduced margin */
+    margin-top: 15px;
     width: 80%;
-    max-width: 250px; /* Adjusted max width */
+    max-width: 250px;
 }
 
 #reload-button:hover {
@@ -248,7 +251,7 @@ h3 {
 
 .start-screen img {
     max-width: 80%;
-    max-height: 30%; /* Further adjusted height */
+    max-height: 30%;
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -301,7 +304,7 @@ h3 {
         padding: 10px;
     }
     .incorrect-guesses-row {
-        grid-template-columns: repeat(auto-fit, minmax(35px, 1fr)); /* Even smaller minmax */
+        grid-template-columns: 2fr 2fr 1fr 1fr; /* Maintain proportions on smaller screens */
         gap: 1px;
     }
     .incorrect-guess,
@@ -309,10 +312,11 @@ h3 {
     .percentage {
         font-size: 9px;
         padding: 1px;
+        height: 18px; /* Enforce height */
+        line-height: 18px; /* Vertically center */
     }
     .direction-arrow-container {
-        height: 18px;
-        width: 20px;
+        height: 18px; /* Enforce height */
     }
     #attempts-left {
         font-size: 12px;
@@ -332,7 +336,7 @@ h3 {
 
 @media (max-width: 360px) {
     .incorrect-guesses-row {
-        grid-template-columns: 1fr 1fr; /* Two columns on very small screens */
+        grid-template-columns: 1.5fr 1.5fr 1fr 1fr; /* Adjust proportions */
     }
     .distance,
     .percentage {
@@ -341,11 +345,7 @@ h3 {
         margin-right: 2px;
     }
     .direction-arrow-container {
-        width: 18px;
-        height: 15px;
-    }
-    .incorrect-guess {
-        width: 100%; /* Full width for incorrect guess in the pair */
+        width: 100%; /* Fill cell */
     }
 }
 
@@ -355,7 +355,7 @@ h3 {
     }
     .distance,
     .percentage {
-        display: block; /* Stack distance and percentage */
+        display: block;
         margin-right: 0;
         font-size: 8px;
     }
